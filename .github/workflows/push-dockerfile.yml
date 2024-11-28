@@ -5,7 +5,10 @@
 name: Publish Docker image
 
 on:
-  release
+  workflow_run: 
+    workflows: ["Bump version"]
+    types: 
+      - completed
 
 jobs:
   push_to_registry:
@@ -17,6 +20,9 @@ jobs:
       contents: read
       attestations: write
       id-token: write
+    env:
+      REGISTRY: docker.io
+      IMAGE_NAME: clovischakrian/sth-back-node
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
