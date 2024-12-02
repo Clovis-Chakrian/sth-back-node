@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelizeConnection } from "../../infra/persistence/SequelizeConfig.js";
+import { sequelizeConnection } from "../../infra/persistence/sequelizeConfig.js";
 
 class Pergunta extends Model { }
 
