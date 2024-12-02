@@ -44,6 +44,7 @@ perguntasController.put('/:id', async (req, res, next) => {
 
 perguntasController.delete('/:id', async (req, res, next) => {
   try {
+    const { id } = req.params;
     await perguntaService.delete(id);
 
     return res.status(204).json();
