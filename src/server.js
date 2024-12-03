@@ -2,7 +2,7 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 import { routes } from "./api/index.js";
-import { sequelizeConnection } from "./infra/persistence/SequelizeConfig.js";
+import { sequelizeConnection } from "./infra/persistence/sequelizeConfig.js";
 
 const port = process.env.PORT || 3000;
 

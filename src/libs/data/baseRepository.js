@@ -16,14 +16,14 @@ class BaseRepository {
    * @returns {object} a entidade com a chave primária específicada.
   */
   async findById(id) {
-    await this.entidade.findByPk(id);
+    return await this.entidade.findByPk(id);
   }
 
   /** 
    * Traz todas as informações do banco.
   */
   async findAll() {
-    await this.entidade.findAll();
+    return await this.entidade.findAll();
   }
 
   /** 
@@ -76,15 +76,14 @@ class BaseRepository {
    * @returns {object} a entidade atualizada.
   */
   async update(id, entidade) {
-    const entidadeAtualizada = await this.entidade.update({
-      ...entidade
-    }, {
-      where: {
-        id
+    await this.entidade.update(
+      { ...entidade },
+      {
+        where: { id },
+        returning: true,
       }
-    });
-
-    return entidadeAtualizada;
+    );
+      return await this.entidade.findByPk(id);
   }
 
   async delete(id) {
