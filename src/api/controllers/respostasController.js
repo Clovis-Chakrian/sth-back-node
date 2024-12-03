@@ -46,7 +46,7 @@ respostasController.put('/:id', async (req, res, next) => {
 
 respostasController.delete('/:id', async (req, res, next) => {
   try {
-    await respostaService.delete(id);
+    await respostaService.delete(req.params.id);
 
     return res.status(204).json();
   } catch (error) {
