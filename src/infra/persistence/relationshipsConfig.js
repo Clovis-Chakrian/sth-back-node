@@ -5,7 +5,6 @@ import { Formulario } from "../../domain/entities/formulario.js";
 import { Aluno } from "../../domain/entities/aluno.js";
 import { Resposta } from "../../domain/entities/resposta.js";
 
-
 Alternativa.belongsTo(Pergunta, { foreignKey: "perguntaID" });
 Pergunta.hasMany(Alternativa, { foreignKey: "perguntaID" });
 
@@ -17,3 +16,11 @@ Aluno.hasMany(Nota, { foreignKey: "alunoId" });
 
 Nota.belongsTo(Resposta, { foreignKey: "respostaId" });
 Resposta.hasMany(Nota, { foreignKey: "respostaId" });
+
+Formulario.hasMany(Resposta, { foreignKey: "formularioId" });
+Formulario.belongsToMany(Pergunta, {
+  foreignKey: "formularioId",
+});
+Pergunta.belongsToMany(Formulario, {
+  foreignKey: "perguntaId",
+});

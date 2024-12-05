@@ -1,7 +1,5 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelizeConnection } from "../../infra/persistence/sequelizeConfig.js";
-import { Resposta } from "./resposta.js";
-import { Pergunta } from "./pergunta.js";
 
 class Formulario extends Model {}
 
@@ -31,20 +29,5 @@ Formulario.init(
   },
   { sequelize: sequelizeConnection, modelName: "formularios" }
 );
-
-
-Formulario.hasMany(Resposta, { foreignKey: "formularioId" });
-
-Formulario.belongsToMany(Pergunta, {
-  through: "FormularioPergunta",
-  foreignKey: "formularioId",
-  as: "formulariosPerguntas", 
-});
-
-Pergunta.belongsToMany(Formulario, {
-  through: "FormularioPergunta",
-  foreignKey: "perguntaId",
-  as: "perguntasFormularios",
-});
 
 export { Formulario };
