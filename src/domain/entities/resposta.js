@@ -1,6 +1,9 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelizeConnection } from "../../infra/persistence/sequelizeConfig.js";
 import { Pergunta } from "./pergunta.js";
+import { Alternativa } from "./alternativa.js";
+import { Formulario } from "./formulario.js";
+import { Aluno } from "./aluno.js";
 
 class Resposta extends Model { }
 
@@ -19,7 +22,6 @@ Resposta.init(
           key: 'id', 
         },
       },
-    /*
     formularioId: {
     type: DataTypes.UUID,
     allowNull: false,
@@ -33,7 +35,7 @@ Resposta.init(
     allowNull: false,
     references: {
         model: Aluno,
-        key: 'id', // Supondo que a tabela Aluno tenha uma coluna id como chave primária
+        key: 'id',
     },
     },
     alternativaId: {
@@ -43,19 +45,15 @@ Resposta.init(
         model: Alternativa,
         key: 'id', // Supondo que a tabela Alternativa tenha uma coluna id como chave primária
      },
-    },*/
+    },
     },
   { sequelize: sequelizeConnection, modelName: 'respostas' }
 );
 
 Resposta.belongsTo(Pergunta, { foreignKey: 'perguntaId' });
-
-/* 
-Definindo os relacionamentos (Associação)
-
 Resposta.belongsTo(Formulario, { foreignKey: 'formularioId' });
 Resposta.belongsTo(Aluno, { foreignKey: 'alunoId' });
 Resposta.belongsTo(Alternativa, { foreignKey: 'alternativaId' });
-*/
+
 
 export { Resposta };
