@@ -43,7 +43,7 @@ Resposta.init(
     allowNull: false,
     references: {
         model: Alternativa,
-        key: 'id', // Supondo que a tabela Alternativa tenha uma coluna id como chave primária
+        key: 'id',
      },
     },
     },
