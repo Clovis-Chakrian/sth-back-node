@@ -25,7 +25,6 @@
     "nodemon": "^3.1.7",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.5",
-    "sth-back-node": "file:"
+    "sequelize": "^6.37.5"
   }
 }
