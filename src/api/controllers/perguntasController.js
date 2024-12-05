@@ -18,6 +18,7 @@ perguntasController.get('/:id', async (req, res, next) => {
 
     res.status(200).json(pergunta);
   } catch (error) {
+    console.log({message: 'foda', error})
     next(error);
   }
 });
