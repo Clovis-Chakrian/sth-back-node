@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import { routes } from "./api/index.js";
 import { sequelizeConnection } from "./infra/persistence/sequelizeConfig.js";
+import { errorHandlerMiddleware } from "./api/middlewares/errorHandler.js";
 
 const port = process.env.PORT || 3000;
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use(errorHandlerMiddleware);
 
 sequelizeConnection.sync({ force: process.env.ERASE_DATABASE_ON_SYNC }).then(async () => {
   app.listen(port, () => {
